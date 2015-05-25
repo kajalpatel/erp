@@ -144,7 +144,6 @@ switch ($strAction)
 			$arrData['created_by'] = $_SESSION['user']['user_id'];
 			$objControl->createRecord($arrData, 'branch_master');
 		}
-		
 		header('Location:' . HTTP_PATH . 'state.php');
 		exit;
 		break;
@@ -160,7 +159,6 @@ switch ($strAction)
 		}
 		header('Location:' . HTTP_PATH . 'website.php');
 		exit;
-
 		break;
 	case 'create_page':
 		$intPageId = $_REQUEST['page_id'];
@@ -197,6 +195,7 @@ switch ($strAction)
 
 		header('Location:' . HTTP_PATH . 'pages.php');
 		exit;
+		break;
 	case 'create_banner':
 		$intPageId = $_REQUEST['page_banner_id'];
 		
@@ -220,6 +219,7 @@ switch ($strAction)
 
 		header('Location:' . HTTP_PATH . 'banners.php');
 		exit;
+		break;
 	case 'update_status':
 		$strTableName = $_REQUEST['table_name'];
 		$intRecordId = $_REQUEST['id'];
@@ -254,18 +254,65 @@ switch ($strAction)
 		exit;
 		break;
 		case 'create_company':
-				echo "<pre>";
-				print_r($_REQUEST);
-				die;
-		break;
-		exit;
+			$arrData['full_name'] = $_REQUEST['full_name'];
+			$arrData['short_name'] = $_REQUEST['short_name'];
+			$arrData['building'] = $_REQUEST['building'];
+			$arrData['street'] = $_REQUEST['street'];
+			$arrData['landmark'] = $_REQUEST['landmark'];
+			$arrData['city'] = $_REQUEST['city'];
+			$arrData['state'] = $_REQUEST['state'];
+			$arrData['area'] = $_REQUEST['area'];
+			$arrData['pincode'] = $_REQUEST['pincode'];
+			$arrData['latitude'] = $_REQUEST['latitude'];
+			$arrData['longitude'] = $_REQUEST['longitude'];
+			$arrData['is_verified'] = $_REQUEST['is_verified'];
+			$arrData['nob'] = $_REQUEST['nob'];
+			$arrData['turn_over'] = $_REQUEST['turn_over'];
+			$arrData['status'] = $_REQUEST['status'];
+			$arrData['email'] = $_REQUEST['email'];
+			$arrData['email_dis'] = $_REQUEST['email_dis'];
+			$arrData['email_dnd'] = $_REQUEST['email_dnd'];
+			$arrData['website'] = $_REQUEST['website'];
+			$arrData['website_dis'] = $_REQUEST['website_dis'];
+			$arrData['website_dnd'] = $_REQUEST['website_dnd'];
+			$arrData['mobile'] = $_REQUEST['mobile'];
+			$arrData['mobile_dis'] = $_REQUEST['mobile_dis'];
+			$arrData['mobile_dnd'] = $_REQUEST['mobile_dnd'];
+			$arrData['landline'] = $_REQUEST['landline'];
+			$arrData['landline_dis'] = $_REQUEST['landline_dis'];
+			$arrData['landline_dnd'] = $_REQUEST['landline_dnd'];
+/*			$arrData['company_description'] = $_REQUEST['company_description'];
+			$arrData['sunday_from'] = $_REQUEST['sunday_from'];
+			$arrData['sunday_to'] = $_REQUEST['sunday_to'];
+			$arrData['monday_from'] = $_REQUEST['monday_from'];
+			$arrData['monday_to'] = $_REQUEST['monday_to'];
+			$arrData['tuesday_from'] = $_REQUEST['tuesday_from'];
+			$arrData['tuesday_to'] = $_REQUEST['tuesday_to'];
+			$arrData['wednesday_from'] = $_REQUEST['wednesday_from'];
+			$arrData['wednesday_to'] = $_REQUEST['wednesday_to'];
+			$arrData['thursday_from'] = $_REQUEST['thursday_from'];
+			$arrData['thursday_to'] = $_REQUEST['thursday_to'];
+			$arrData['friday_from'] = $_REQUEST['friday_from'];
+			$arrData['friday_to'] = $_REQUEST['friday_to'];
+			$arrData['saturday_from'] = $_REQUEST['saturday_from'];
+			$arrData['saturday_to'] = $_REQUEST['saturday_to'];
+			$arrData['sunday_closed'] = $_REQUEST['sunday_closed'];
+			$arrData['monday_closed'] = $_REQUEST['monday_closed'];
+			$arrData['tuesday_closed'] = $_REQUEST['tuesday_closed'];
+			$arrData['wednesday_closed'] = $_REQUEST['wednesday_closed'];
+			$arrData['thursday_closed'] = $_REQUEST['thursday_closed'];
+			$arrData['friday_closed'] = $_REQUEST['friday_closed'];
+			$arrData['saturday_closed'] = $_REQUEST['saturday_closed'];*/
+
+			$objControl->createRecord($arrData, 'company_master');
+			header('Location:' . HTTP_PATH . 'create_company.php');
+			exit;
+			break;
 		case 'import_company':
-		
 		set_include_path(get_include_path() . PATH_SEPARATOR . 'Classes/');
 		require_once 'PHPExcel/IOFactory.php';
 		// This is the file path to be uploaded.
 		$inputFileName = 'Book1.xlsx'; 
-
 		try {
 			$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
 		} catch(Exception $e) {
