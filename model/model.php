@@ -103,6 +103,7 @@
 			}
 		}
 		
+		
 		/* Function checks if the edit screen opened is being used to add a new record or update an already existing record 
 		 * @param $strParameter    - the URL parameter that has been passed fot changing the screen's functionality from add to update. This variable also holds the parameter's value
 		 * @param $strFunctionName - the function(for fetching records from the database) that gets called if the URL parameter is set

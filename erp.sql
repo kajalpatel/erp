@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2015 at 07:18 PM
+-- Generation Time: May 25, 2015 at 09:51 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -561,13 +561,20 @@ INSERT INTO `city_master` (`city_id`, `country_id`, `state_id`, `city_name`, `st
 CREATE TABLE IF NOT EXISTS `company_advertise` (
   `company_advertise_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `data_source` varchar(300) DEFAULT NULL,
-  `city` varchar(200) DEFAULT NULL,
+  `ad_city` varchar(200) DEFAULT NULL,
   `budget` varchar(200) DEFAULT NULL,
   `year` varchar(100) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `ad_date` varchar(10) DEFAULT NULL,
   `page` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`company_advertise_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `company_advertise`
+--
+
+INSERT INTO `company_advertise` (`company_advertise_id`, `data_source`, `ad_city`, `budget`, `year`, `ad_date`, `page`) VALUES
+(2, 'data source', 'amd', '25000', '2015', '05/12/2015', 'no page');
 
 -- --------------------------------------------------------
 
@@ -577,14 +584,21 @@ CREATE TABLE IF NOT EXISTS `company_advertise` (
 
 CREATE TABLE IF NOT EXISTS `company_contact` (
   `company_contact_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(100) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `dom` date DEFAULT NULL,
-  `mobile` varchar(20) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `contact_full_name` varchar(100) DEFAULT NULL,
+  `dob` varchar(10) DEFAULT NULL,
+  `dom` varchar(10) DEFAULT NULL,
+  `contact_mobile` varchar(20) DEFAULT NULL,
+  `contact_email` varchar(100) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`company_contact_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `company_contact`
+--
+
+INSERT INTO `company_contact` (`company_contact_id`, `contact_full_name`, `dob`, `dom`, `contact_mobile`, `contact_email`, `designation`) VALUES
+(2, 'kajal', '05/12/2015', '05/13/2015', '8373838373', 'kajalpatel0377@gmail.com', 'php developer');
 
 -- --------------------------------------------------------
 
@@ -596,7 +610,7 @@ CREATE TABLE IF NOT EXISTS `company_master` (
   `company_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) DEFAULT NULL,
   `short_name` varchar(100) DEFAULT NULL,
-  `est_date` date DEFAULT NULL,
+  `est_date` varchar(100) DEFAULT NULL,
   `building` varchar(255) DEFAULT NULL,
   `street` varchar(255) DEFAULT NULL,
   `landmark` varchar(255) DEFAULT NULL,
@@ -610,7 +624,7 @@ CREATE TABLE IF NOT EXISTS `company_master` (
   `nob` varchar(300) DEFAULT NULL,
   `turn_over` varchar(300) DEFAULT NULL,
   `status` varchar(300) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `email` varchar(300) DEFAULT NULL,
   `email_dis` enum('Yes','No') DEFAULT NULL,
   `email_dnd` enum('Yes','No') DEFAULT NULL,
   `website` varchar(100) DEFAULT NULL,
@@ -630,14 +644,14 @@ CREATE TABLE IF NOT EXISTS `company_master` (
   UNIQUE KEY `company_profile_id_2` (`company_profile_id`,`company_contact_id`,`company_advertise_id`),
   KEY `company_contact_id` (`company_contact_id`,`company_advertise_id`),
   KEY `company_advertise_id` (`company_advertise_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `company_master`
 --
 
 INSERT INTO `company_master` (`company_id`, `full_name`, `short_name`, `est_date`, `building`, `street`, `landmark`, `city`, `state`, `area`, `pincode`, `latitude`, `longitute`, `is_verified`, `nob`, `turn_over`, `status`, `email`, `email_dis`, `email_dnd`, `website`, `website_dis`, `website_dnd`, `mobile`, `mobile_dis`, `mobile_dnd`, `landline`, `landline_dis`, `landline_dnd`, `company_profile_id`, `company_contact_id`, `company_advertise_id`) VALUES
-(7, '', '', NULL, 'chdnsicnh', '', 'gfbugdu', 'hjdhdgh', 'gdhdsvh', 'hdsgdshj', '8747347', '87954765', NULL, '', 'Nature of Bussiness', 'Turn Over', 'Active', '', NULL, NULL, 'www.jj.sj', 'Yes', NULL, '', NULL, 'Yes', '7438734', 'Yes', NULL, NULL, NULL, NULL);
+(13, 'kajal', 'kk', '05/27/2015', 'gopal palace', 'naheru nagar', 'nh', 'amd', 'guj', 'naheru nagar', '372523', '23.023046', '72.537736', 'Yes', 'Nature of Bussiness', 'Turn Over', 'Active', 'kajalpatel0377@gmail.com', 'Yes', 'No', 'www.kk.com', 'No', 'Yes', '9168753456', 'Yes', 'Yes', '43526789', 'Yes', 'No', 5, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -1130,8 +1144,16 @@ CREATE TABLE IF NOT EXISTS `company_profile` (
   `thursday_closed` enum('Yes','No') DEFAULT NULL,
   `friday_closed` enum('Yes','No') DEFAULT NULL,
   `saturday_closed` enum('Yes','No') DEFAULT NULL,
+  `payment_options` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`company_profile_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `company_profile`
+--
+
+INSERT INTO `company_profile` (`company_profile_id`, `company_description`, `sunday_from`, `sunday_to`, `monday_from`, `monday_to`, `tuesday_from`, `tuesday_to`, `wednesday_from`, `wednesday_to`, `thursday_from`, `thursday_to`, `friday_from`, `friday_to`, `saturday_from`, `saturday_to`, `sunday_closed`, `monday_closed`, `tuesday_closed`, `wednesday_closed`, `thursday_closed`, `friday_closed`, `saturday_closed`, `payment_options`) VALUES
+(5, '<p>this is company profile</p>\r\n', '07:00', '01:00', '10:00', '18:00', '10:00', '18:00', '10:00', '18:00', '10:00', '18:00', '10:00', '18:00', '10:00', '18:00', 'No', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'Cash,Master Card,Visa Card,Debit Card,Money Orders,Cheques,Credit Card');
 
 -- --------------------------------------------------------
 

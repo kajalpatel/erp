@@ -256,6 +256,7 @@ switch ($strAction)
 		case 'create_company':
 			$arrData['full_name'] = $_REQUEST['full_name'];
 			$arrData['short_name'] = $_REQUEST['short_name'];
+			$arrData['est_date'] = $_REQUEST['est_date'];
 			$arrData['building'] = $_REQUEST['building'];
 			$arrData['street'] = $_REQUEST['street'];
 			$arrData['landmark'] = $_REQUEST['landmark'];
@@ -264,24 +265,25 @@ switch ($strAction)
 			$arrData['area'] = $_REQUEST['area'];
 			$arrData['pincode'] = $_REQUEST['pincode'];
 			$arrData['latitude'] = $_REQUEST['latitude'];
-			$arrData['longitude'] = $_REQUEST['longitude'];
-			$arrData['is_verified'] = $_REQUEST['is_verified'];
+			$arrData['longitute'] = $_REQUEST['longitute'];
+			$arrData['is_verified'] = isset($_REQUEST['is_verified']) ? $_REQUEST['is_verified'] : 'No' ;
 			$arrData['nob'] = $_REQUEST['nob'];
 			$arrData['turn_over'] = $_REQUEST['turn_over'];
 			$arrData['status'] = $_REQUEST['status'];
 			$arrData['email'] = $_REQUEST['email'];
-			$arrData['email_dis'] = $_REQUEST['email_dis'];
-			$arrData['email_dnd'] = $_REQUEST['email_dnd'];
+			$arrData['email_dis'] = isset($_REQUEST['email_dis']) ? $_REQUEST['email_dis'] : 'No' ;
+			$arrData['email_dnd'] = isset($_REQUEST['email_dnd']) ? $_REQUEST['email_dnd'] : 'No' ;
 			$arrData['website'] = $_REQUEST['website'];
-			$arrData['website_dis'] = $_REQUEST['website_dis'];
-			$arrData['website_dnd'] = $_REQUEST['website_dnd'];
+			$arrData['website_dis'] = isset($_REQUEST['website_dis']) ? $_REQUEST['website_dis'] : 'No' ;
+			$arrData['website_dnd'] = isset($_REQUEST['website_dnd']) ? $_REQUEST['website_dnd'] : 'No' ;
 			$arrData['mobile'] = $_REQUEST['mobile'];
-			$arrData['mobile_dis'] = $_REQUEST['mobile_dis'];
-			$arrData['mobile_dnd'] = $_REQUEST['mobile_dnd'];
+			$arrData['mobile_dis'] = isset($_REQUEST['mobile_dis']) ? $_REQUEST['mobile_dis'] : 'No' ;
+			$arrData['mobile_dnd'] = isset($_REQUEST['mobile_dnd']) ? $_REQUEST['mobile_dnd'] : 'No' ;
 			$arrData['landline'] = $_REQUEST['landline'];
-			$arrData['landline_dis'] = $_REQUEST['landline_dis'];
-			$arrData['landline_dnd'] = $_REQUEST['landline_dnd'];
-/*			$arrData['company_description'] = $_REQUEST['company_description'];
+			$arrData['landline_dis'] = isset($_REQUEST['landline_dis']) ? $_REQUEST['landline_dis'] : 'No' ;
+			$arrData['landline_dnd'] = isset($_REQUEST['landline_dnd']) ? $_REQUEST['landline_dnd'] : 'No' ;
+			
+			$arrData['company_description'] = $_REQUEST['company_description'];
 			$arrData['sunday_from'] = $_REQUEST['sunday_from'];
 			$arrData['sunday_to'] = $_REQUEST['sunday_to'];
 			$arrData['monday_from'] = $_REQUEST['monday_from'];
@@ -296,15 +298,38 @@ switch ($strAction)
 			$arrData['friday_to'] = $_REQUEST['friday_to'];
 			$arrData['saturday_from'] = $_REQUEST['saturday_from'];
 			$arrData['saturday_to'] = $_REQUEST['saturday_to'];
-			$arrData['sunday_closed'] = $_REQUEST['sunday_closed'];
-			$arrData['monday_closed'] = $_REQUEST['monday_closed'];
-			$arrData['tuesday_closed'] = $_REQUEST['tuesday_closed'];
-			$arrData['wednesday_closed'] = $_REQUEST['wednesday_closed'];
-			$arrData['thursday_closed'] = $_REQUEST['thursday_closed'];
-			$arrData['friday_closed'] = $_REQUEST['friday_closed'];
-			$arrData['saturday_closed'] = $_REQUEST['saturday_closed'];*/
-
+			$arrData['sunday_closed'] = isset($_REQUEST['sunday_closed']) ? $_REQUEST['sunday_closed'] : 'No' ;
+			$arrData['monday_closed'] = isset($_REQUEST['monday_closed']) ? $_REQUEST['monday_closed'] : 'No' ;
+			$arrData['tuesday_closed'] = isset($_REQUEST['tuesday_closed']) ? $_REQUEST['tuesday_closed'] : 'No' ;
+			$arrData['wednesday_closed'] = isset($_REQUEST['wednesday_closed']) ? $_REQUEST['wednesday_closed'] : 'No' ;
+			$arrData['thursday_closed'] = isset($_REQUEST['thursday_closed']) ? $_REQUEST['thursday_closed'] : 'No' ;
+			$arrData['friday_closed'] = isset($_REQUEST['friday_closed']) ? $_REQUEST['friday_closed'] : 'No' ;
+			$arrData['saturday_closed'] = isset($_REQUEST['saturday_closed']) ? $_REQUEST['saturday_closed'] : 'No' ;
+			$arrData['payment_options'] = @implode(',', $_REQUEST['paymentOptions']);
+			$objControl->createRecord($arrData, 'company_profile');
+			$arrData['company_profile_id']= $objControl->dbConnect->Insert_ID();
+			
+			$arrData['contact_full_name'] = $_REQUEST['contact_full_name'];
+			$arrData['dob'] = $_REQUEST['dob'];
+			$arrData['dom'] = $_REQUEST['dom'];
+			$arrData['contact_mobile'] = $_REQUEST['contact_mobile'];
+			$arrData['contact_email'] = $_REQUEST['contact_email'];
+			$arrData['designation'] = $_REQUEST['designation'];
+			$objControl->createRecord($arrData, 'company_contact');
+			$arrData['company_contact_id']= $objControl->dbConnect->Insert_ID();
+			
+			$arrData['data_source'] = $_REQUEST['data_source'];
+			$arrData['ad_city'] = $_REQUEST['ad_city'];
+			$arrData['budget'] = $_REQUEST['budget'];
+			$arrData['year'] = $_REQUEST['year'];
+			$arrData['ad_date'] = $_REQUEST['ad_date'];
+			$arrData['page'] = $_REQUEST['page'];
+			$objControl->createRecord($arrData, 'company_advertise');
+			$arrData['company_advertise_id']= $objControl->dbConnect->Insert_ID();
+			
+			//$strCondition = "company_profile_id='$companyId'";
 			$objControl->createRecord($arrData, 'company_master');
+
 			header('Location:' . HTTP_PATH . 'create_company.php');
 			exit;
 			break;

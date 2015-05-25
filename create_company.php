@@ -114,7 +114,7 @@ if (isset($intPageId) && $intPageId != '')
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Longitude</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="longitude" name="longitude" type="text" value="<?php echo (isset($arrData[0]['longitude']) ? $arrData[0]['longitude'] : ''); ?>">
+                  <input class="input-xlarge focused" id="longitute" name="longitute" type="text" value="<?php echo (isset($arrData[0]['longitute']) ? $arrData[0]['longitute'] : ''); ?>">
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ if (isset($intPageId) && $intPageId != '')
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Is Verified</label>
                 <div class="controls">
-                  <input type="checkbox" name="is_verified" id="is_verified" value="">
+                  <input type="checkbox" name="is_verified" id="is_verified" value="yes">
                 </div>
               </div>
               <div class="control-group span6">
@@ -310,7 +310,7 @@ if (isset($intPageId) && $intPageId != '')
                             <option value="24:00">24:00</option>
 
                           </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="sunday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="sunday_closed" value="Yes"></td>
                       </tr>
                       <tr>
                         <td>Monday</td>
@@ -366,7 +366,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="monday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="monday_closed" value="Yes"></td>
                       </tr>
                       <tr>
                         <td>Tuesday</td>
@@ -422,7 +422,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="tuesday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="tuesday_closed" value="Yes"></td>
                       </tr>
                       <tr>
                         <td>Wednesday</td>
@@ -478,7 +478,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="wednesday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="wednesday_closed" value="Yes"></td>
                       </tr>
                       <tr>
                         <td>Thursday</td>
@@ -534,7 +534,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="thursday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="thursday_closed" value="Yes"></td>
                       </tr>
                       <tr>
                         <td>Friday</td>
@@ -590,7 +590,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="friday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="friday_closed" value="Yes"></td>
                       </tr>
 					  <tr>
                         <td>Saturday</td>
@@ -646,7 +646,7 @@ if (isset($intPageId) && $intPageId != '')
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select></td>
-                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="saturday_closed"></td>
+                        <td><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="saturday_closed" value="Yes"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -660,19 +660,19 @@ if (isset($intPageId) && $intPageId != '')
 					 <div class="control-group span3">
 						<label class="control-label" for="focusedInput">Cash</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Cash">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Master Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Master Card">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Visa Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Visa Card">
 						</div>
 					</div>
                 </div>
@@ -680,19 +680,19 @@ if (isset($intPageId) && $intPageId != '')
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Debit Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Debit Card">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Money Orders</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Money Orders">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Cheques</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Cheques">
 						</div>
 					</div>
                 </div>
@@ -700,19 +700,19 @@ if (isset($intPageId) && $intPageId != '')
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Credit Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Credit Card">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Travellers Cheque</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Travellers Cheque">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Financing Available</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Financing Available">
 						</div>
 					</div>
                 </div>
@@ -720,13 +720,13 @@ if (isset($intPageId) && $intPageId != '')
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">American Express Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="American Express Card">
 						</div>
 					</div>
 					<div class="control-group span3">
 						<label class="control-label" for="focusedInput">Dinners Card</label>
 						<div class="controls">
-						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions">
+						  <input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="paymentOptions[]" value="Dinners Card">
 						</div>
 					</div>
                 </div>
@@ -749,11 +749,11 @@ if (isset($intPageId) && $intPageId != '')
 						  </thead>   
 						  <tbody>
 							<tr>
-								<td><input class="input-small focused" id="full_name" name="full_name" type="text" value="<?php echo (isset($arrData[0]['full_name']) ? $arrData[0]['full_name'] : ''); ?>"></td>
+								<td><input class="input-small focused" id="contact_full_name" name="contact_full_name" type="text" value="<?php echo (isset($arrData[0]['contact_full_name']) ? $arrData[0]['contact_full_name'] : ''); ?>"></td>
 								<td class="center"><input type="text" class="input-small datepicker" id="dob" name="dob" value="<?php echo (isset($arrData[0]['dob']) ? $arrData[0]['dob'] : ''); ?>"></td>
                                 <td class="center"><input type="text" class="input-small datepicker" id="dom" name="dom"value="<?php echo (isset($arrData[0]['dom']) ? $arrData[0]['dom'] : ''); ?>"></td>
-								<td class="center"><input class="input-small focused" id="mobile" name="mobile" type="text" value="<?php echo (isset($arrData[0]['mobile']) ? $arrData[0]['mobile'] : ''); ?>"></td>
-                                <td class="center"><input class="input-small focused" id="email" name="email" type="email" value="<?php echo (isset($arrData[0]['email']) ? $arrData[0]['email'] : ''); ?>"></td>
+								<td class="center"><input class="input-small focused" id="contact_mobile" name="contact_mobile" type="text" value="<?php echo (isset($arrData[0]['contact_mobile']) ? $arrData[0]['contact_mobile'] : ''); ?>"></td>
+                                <td class="center"><input class="input-small focused" id="contact_email" name="contact_email" type="email" value="<?php echo (isset($arrData[0]['contact_email']) ? $arrData[0]['contact_email'] : ''); ?>"></td>
 								<td class="center"><input class="input-small focused" id="designation" name="designation" type="text" value="<?php echo (isset($arrData[0]['designation']) ? $arrData[0]['designation'] : ''); ?>"></td>
 								<td class="center"><a class="btn btn-success" href="#"><i class="icon-plus icon-white"></i>Add</a></td>
 							</tr>
@@ -766,13 +766,13 @@ if (isset($intPageId) && $intPageId != '')
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Data Source</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="full_name" name="full_name" type="text" value="<?php echo (isset($arrData[0]['full_name']) ? $arrData[0]['full_name'] : ''); ?>">
+                  <input class="input-xlarge focused" id="data_source" name="data_source" type="text" value="<?php echo (isset($arrData[0]['data_source']) ? $arrData[0]['data_source'] : ''); ?>">
                 </div>
               </div>
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">City</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="short_name" name="short_name" type="text" value="<?php echo (isset($arrData[0]['short_name']) ? $arrData[0]['short_name'] : ''); ?>">
+                  <input class="input-xlarge focused" id="ad_city" name="ad_city" type="text" value="<?php echo (isset($arrData[0]['ad_city']) ? $arrData[0]['ad_city'] : ''); ?>">
                 </div>
               </div>
             </div>
@@ -780,13 +780,13 @@ if (isset($intPageId) && $intPageId != '')
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Budget</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="page_url" name="page_url" type="text" value="<?php echo (isset($arrData[0]['page_url']) ? $arrData[0]['page_url'] : ''); ?>">
+                  <input class="input-xlarge focused" id="budget" name="budget" type="text" value="<?php echo (isset($arrData[0]['budget']) ? $arrData[0]['budget'] : ''); ?>">
                 </div>
               </div>
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Year</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="building_name" name="building_name" type="text" value="<?php echo (isset($arrData[0]['building_name']) ? $arrData[0]['building_name'] : ''); ?>">
+                  <input class="input-xlarge focused" id="year" name="year" type="text" value="<?php echo (isset($arrData[0]['year']) ? $arrData[0]['year'] : ''); ?>">
                 </div>
               </div>
             </div>
@@ -794,13 +794,13 @@ if (isset($intPageId) && $intPageId != '')
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Date</label>
                 <div class="controls">
-                  <input class="input-xlarge datepicker" id="street" name="street" type="text" value="<?php echo (isset($arrData[0]['street']) ? $arrData[0]['street'] : ''); ?>">
+                  <input class="input-xlarge datepicker" id="ad_date" name="ad_date" type="text" value="<?php echo (isset($arrData[0]['ad_date']) ? $arrData[0]['ad_date'] : ''); ?>">
                 </div>
               </div>
               <div class="control-group span6">
                 <label class="control-label" for="focusedInput">Page</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="building_name" name="building_name" type="text" value="<?php echo (isset($arrData[0]['building_name']) ? $arrData[0]['building_name'] : ''); ?>">
+                  <input class="input-xlarge focused" id="page" name="page" type="text" value="<?php echo (isset($arrData[0]['page']) ? $arrData[0]['page'] : ''); ?>">
                 </div>
               </div>
             </div>
